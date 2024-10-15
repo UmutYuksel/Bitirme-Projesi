@@ -1,0 +1,58 @@
+@model IEnumerable<BitirmeProjesi.Models.Category>
+<style>
+    ul li span{font-size: 10px; padding-left: 3px; color: #a1a1a1;}  
+</style>
+<div class="uiBox">
+    <h3 class="cat-title">Kategoriler</h3>
+    <nav>
+        <ul class="categories-left-menu">
+            <li class="category-vehicle">
+                
+                <ul>
+                    <a href="" title="Vasıta">Vasıta</a><span>(123.123)</span>
+                    <!-- İlk 9 öğeyi göster -->
+                    @foreach (var category in Model.Take(9))
+                    {
+                        <li><a href="">@category.CategoryName</a><span>(123.123)</span></li>
+                    }
+
+                    <!-- Geri kalan kategoriler başlangıçta gizlenmiş halde olacak -->
+                    <div class="hidden-categories" style="display:none;">
+                        @foreach (var category in Model.Skip(9))
+                        {
+                            <li><a href="">@category.CategoryName</a><span>(123.123)</span></li>
+                        }
+                    </div>
+
+                    <!-- Tümünü Göster / Kapat Butonu -->
+                    <a href="javascript:void(0);" class="toggle-all" data-state="show">
+                        Tümünü Göster<i style="padding-left: 5px;" class="bi bi-caret-down-fill"></i>
+                    </a>
+                </ul>
+            </li>
+            <hr>
+        </ul>
+    </nav>
+</div>
+
+<!-- jQuery veya Vanilla JS ile Tümünü Göster / Kapat işlevi -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".toggle-all").click(function () {
+            // Butonun bulunduğu liste öğesine (li) göre gizli kategorileri seçelim
+            var hiddenCategories = $(this).closest("ul").find(".hidden-categories");
+
+            // Duruma göre aç/kapat işlemi
+            if ($(this).data("state") === "show") {
+                hiddenCategories.slideDown();  // Kategorileri göster
+                $(this).html('Kapat<i style="padding-left: 5px;" class="bi bi-caret-up-fill"></i>'); // Yazı ve ikonu değiştir
+                $(this).data("state", "hide"); // Durumu değiştir
+            } else {
+                hiddenCategories.slideUp();    // Kategorileri gizle
+                $(this).html('Tümünü Göster<i style="padding-left: 5px;" class="bi bi-caret-down-fill"></i>'); // Yazı ve ikonu değiştir
+                $(this).data("state", "show"); // Durumu değiştir
+            }
+        });
+    });
+</script>

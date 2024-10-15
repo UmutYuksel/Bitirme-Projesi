@@ -1,0 +1,89 @@
+@model BitirmeProjesi.Models.CarCreate
+
+<h2>Yeni Araç Ekle</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="CategoryId"></label>
+        <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId" id="categorySelect"></select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="BrandId"></label>
+        <select asp-for="BrandId" class="form-control" asp-items="ViewBag.BrandId" id="brandSelect"></select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ModelName"></label>
+        <select asp-for="ModelName" class="form-control" asp-items="ViewBag.ModelId" id="modelSelect"></select>
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="Year" class="control-label"></label>
+        <input asp-for="Year" class="form-control" />
+        <span asp-validation-for="Year" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Millage" class="control-label"></label>
+        <input asp-for="Millage" class="form-control" />
+        <span asp-validation-for="Millage" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="HorsePower" class="control-label"></label>
+        <input asp-for="HorsePower" class="form-control" />
+        <span asp-validation-for="HorsePower" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="MaxTorque" class="control-label"></label>
+        <input asp-for="MaxTorque" class="form-control" />
+        <span asp-validation-for="MaxTorque" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Color" class="control-label"></label>
+        <input asp-for="Color" class="form-control" />
+        <span asp-validation-for="Color" class="text-danger"></span>
+    </div>
+
+     <div class="form-group">
+        <label asp-for="transmissionType"></label>
+        <select asp-for="transmissionType" class="form-control" asp-items="ViewBag.TransmissionType"></select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+    <a asp-action="Index,Home" class="btn btn-secondary">İptal</a>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#categorySelect').change(function () {
+                var categoryId = $(this).val();
+                $.get('/CarCreate/GetBrandsByCategory?categoryId=' + categoryId, function (data) {
+                    $('#brandSelect').empty();
+                    $('#brandSelect').append('<option value="">Marka Seçin</option>');
+                    $.each(data, function (i, item) {
+                        $('#brandSelect').append('<option value="' + item.value + '">' + item.text + '</option>');
+                    });
+                    $('#modelSelect').empty().append('<option value="">Model Seçin</option>'); // Reset model select
+                });
+            });
+
+            $('#brandSelect').change(function () {
+                var brandId = $(this).val();
+                $.get('/CarCreate/GetModelsByBrand?brandId=' + brandId, function (data) {
+                    $('#modelSelect').empty();
+                    $('#modelSelect').append('<option value="">Model Seçin</option>');
+                    $.each(data, function (i, item) {
+                        $('#modelSelect').append('<option value="' + item.value + '">' + item.text + '</option>');
+                    });
+                });
+            });
+        });
+    </script>
+}

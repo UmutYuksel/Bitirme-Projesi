@@ -1,0 +1,16 @@
+﻿@model BitirmeProjesi.Models.Brand
+
+<h2>Marka Model ve Kategori Oluşturucu</h2>
+<hr>
+
+<div class="row">
+    <div class="col-md-8">
+        <partial name="CreateModelPartial" model="new BitirmeProjesi.Models.BrandModel()" />
+    </div>
+
+    <div class="col-md-4">
+        <partial name="CreateBrandPartial" model="Model" />
+        <hr>
+        <partial name="CreateCategoryPartial" model="new BitirmeProjesi.Models.Category()" />
+    </div>
+</div>

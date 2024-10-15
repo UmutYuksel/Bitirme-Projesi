@@ -1,0 +1,23 @@
+@model BitirmeProjesi.Models.Brand
+
+<h4>Marka Ekle</h4>
+<form asp-controller="Create" asp-action="CreateBrandPartial" method="post">
+    <div asp-validation-summary="All"></div>
+    <div class="mb-3">
+        <label for="CategoryId" class="form-label">Araç Kategorisi</label>
+        <select name="CategoryId" class="form-select">
+            <option value="" disabled selected>Kategori Seçiniz</option>
+            @foreach (var category in ViewBag.Categories)
+            {
+                <option value="@category.Value">@category.Text</option>
+            }
+        </select>
+        <span asp-validation-for="CategoryId"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="BrandName" class="form-label"></label>
+        <input asp-for="BrandName" class="form-control" />
+        <span asp-validation-for="BrandName"></span>
+    </div>
+    <button class="btn btn-primary" type="submit">Kaydet</button>
+</form>

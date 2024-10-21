@@ -1,9 +1,7 @@
-markdown
-Kodu kopyala
 # Bitirme Projesi
 
 ## Proje Hakkında
-Bitirme Projesi, [Umut Yükse](https://github.com/UmutYuksel) tarafından geliştirilen bir otomobil ilanı yönetim sistemidir. Kullanıcıların otomobil ilanlarını görüntülemesine, eklemesine, düzenlemesine ve silmesine olanak tanır. Proje, ASP.NET Core MVC ve Entity Framework Core kullanılarak geliştirilmiştir.
+Bitirme Projesi, [Umut Yüksel](https://github.com/UmutYuksel) tarafından geliştirilen bir otomobil ilanı yönetim sistemidir. Kullanıcıların otomobil ilanlarını görüntülemesine, eklemesine, düzenlemesine ve silmesine olanak tanır. Proje, ASP.NET Core MVC ve Entity Framework Core kullanılarak geliştirilmiştir.
 
 ## Özellikler
 - Otomobil ilanı ekleme, düzenleme ve silme

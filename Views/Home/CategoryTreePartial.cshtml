@@ -1,12 +1,28 @@
 @model IEnumerable<BitirmeProjesi.ViewModel.CategoryWithVehicleCountViewModel>
 
 <div class="uiBox">
-    <nav>
-        <ul class="categories-left-menu">
-            <li class="category-vehicle">
-                <ul>
-                    <a style="font-weight: bold;" href="" title="Vasıta">Vasıta</a>
-                    @foreach (var category in Model.Take(9))
+    <ul class="categories-left-menu">
+        <li class="category-vehicle">
+            <ul>
+                <a style="font-weight: bold;" href="" title="Vasıta">Vasıta</a>
+                @* Toplam araç sayısını hesapla *@
+                @{
+                    var totalVehicleCount = Model.Sum(category => category.VehicleCount);
+                }
+                <span style="font-size: 0.8em; color: gray;">(@totalVehicleCount)</span>
+
+                @foreach (var category in Model.Take(9))
+                {
+                    <li>
+                        <a href="javascript:void(0);" onclick="filterCars(@category.Category.CategoryId)">
+                            @category.Category.CategoryName
+                        </a>
+                        <span style="font-size: 0.8em; color: gray;">(@category.VehicleCount)</span>
+                    </li>
+                }
+
+                <div class="hidden-categories" style="display:none;">
+                    @foreach (var category in Model.Skip(9))
                     {
                         <li>
                             <a href="javascript:void(0);" onclick="filterCars(@category.Category.CategoryId)">
@@ -15,29 +31,16 @@
                             <span style="font-size: 0.8em; color: gray;">(@category.VehicleCount)</span>
                         </li>
                     }
+                </div>
 
-                    <div class="hidden-categories" style="display:none;">
-                        @foreach (var category in Model.Skip(9))
-                        {
-                            <li>
-                                <a href="javascript:void(0);" onclick="filterCars(@category.Category.CategoryId)">
-                                    @category.Category.CategoryName
-                                </a>
-                                <span style="font-size: 0.8em; color: gray;">(@category.VehicleCount)</span>
-                            </li>
-                        }
-                    </div>
-
-                    <a href="javascript:void(0);" class="toggle-all" data-state="show">Tümünü Göster
-                        <i style="padding-left: 5px;" class="bi bi-caret-down-fill"></i>
-                    </a>
-                </ul>
-            </li>
-            <hr class="my-3">
-        </ul>
-    </nav>
+                <a href="javascript:void(0);" class="toggle-all" data-state="show">Tümünü Göster
+                    <i style="padding-left: 5px;" class="bi bi-caret-down-fill"></i>
+                </a>
+            </ul>
+        </li>
+        <hr class="my-3">
+    </ul>
 </div>
-
 
 <!-- jQuery veya Vanilla JS ile Tümünü Göster / Kapat işlevi -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -59,6 +62,7 @@
             }
         });
     });
+
     function filterCars(categoryId) {
         $.ajax({
             url: '@Url.Action("GetCarsByCategory", "Home")', // Aksiyonunuzu belirtin

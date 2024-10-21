@@ -129,7 +129,7 @@ public class HomeController : Controller
         bool isValid = false;
 
         // Get existing car details from the database
-        var existingCar = await _context.Cars.FindAsync(id); 
+        var existingCar = await _context.Cars.FindAsync(id);
         if (existingCar == null)
         {
             return NotFound(); // Car not found
@@ -287,4 +287,16 @@ public class HomeController : Controller
 
         return Json(model); // Return HorsePower and MaxTorque as JSON
     }
+
+    // AJAX: Filter ModelList by selectedCategory
+    [HttpGet]
+    public IActionResult GetCarsByCategory(int categoryId)
+    {
+        var cars = _context.Cars
+            .Where(car => car.CategoryId == categoryId) // Seçilen kategoriye göre filtreleme
+            .ToList();
+
+        return PartialView("HomeListPartial", cars); // Filtrelenmiş araçları döndür
+    }
+
 }

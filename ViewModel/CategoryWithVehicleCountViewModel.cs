@@ -4,7 +4,7 @@ namespace BitirmeProjesi.ViewModel
 {
     public class CategoryWithVehicleCountViewModel
     {
-        public Category Category { get; set; } // Kategori bilgisi
-        public int VehicleCount { get; set; }   // Araç sayısı
+        public Category Category { get; set; } 
+        public int VehicleCount { get; set; }   
     }
 }

@@ -9,6 +9,6 @@ namespace BitirmeProjesi.Data
         [Key]
         public int CategoryId { get; set; }
         public string? CategoryName { get; set; }
-        public ICollection<Brand>? Brands { get; set; } // Kategoriye bağlı markalar
+        public ICollection<Brand>? Brands { get; set; }
     }
 }

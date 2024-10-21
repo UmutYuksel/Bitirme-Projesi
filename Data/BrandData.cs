@@ -9,8 +9,8 @@ namespace BitirmeProjesi.Data
         [Key]
         public int BrandId { get; set; }
         public string? BrandName { get; set; }
-        public int CategoryId { get; set; } // Hangi kategoriye ait olduğunu belirtiyor
-        public Category? Category { get; set; } // İlişki
+        public int CategoryId { get; set; } 
+        public Category? Category { get; set; } 
 
     }
 }

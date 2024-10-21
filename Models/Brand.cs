@@ -13,8 +13,8 @@ namespace BitirmeProjesi.Models
         [Required(ErrorMessage = "Araç Markası Eksik")]
         [StringLength(50)]
         public string? BrandName { get; set; }
-        public int CategoryId { get; set; } // Hangi kategoriye ait olduğunu belirtiyor
-        public Category? Category { get; set; } // İlişki
+        public int CategoryId { get; set; } 
+        public Category? Category { get; set; } 
 
     }
 }

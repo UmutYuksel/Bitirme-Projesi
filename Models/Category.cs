@@ -15,6 +15,6 @@ namespace BitirmeProjesi.Models
         [StringLength(100)]
         public string? CategoryName { get; set; }
 
-        public ICollection<Brand>? Brands { get; set; } // Kategoriye bağlı markalar
+        public ICollection<Brand>? Brands { get; set; } 
     }
 }

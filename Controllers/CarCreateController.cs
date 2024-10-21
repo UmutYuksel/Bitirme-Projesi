@@ -12,17 +12,16 @@ namespace BitirmeProjesi.Controllers
     {
         private readonly DataContext _context;
 
+        // MARK: Constructor - Initializes the DataContext
         public CarCreateController(DataContext context)
         {
             _context = context;
         }
 
-        // GET: Car/Create
+        // MARK: GET - Loads the Create view with initial data
         [HttpGet]
         public IActionResult Create()
         {
-
-            // Kategoriler için varsayılan seçenekle birlikte SelectList oluşturuyoruz
             var categories = GetCategorySelectList().ToList();
             categories.Insert(0, new SelectListItem { Value = "", Text = "Kategori Seçiniz" });
 
@@ -34,6 +33,7 @@ namespace BitirmeProjesi.Controllers
             return View(new CarCreate());
         }
 
+        // MARK: POST - Handles form submission for creating a new car
         [HttpPost]
         public async Task<IActionResult> Create(CarCreate model, IFormFile imageFile)
         {
@@ -98,7 +98,6 @@ namespace BitirmeProjesi.Controllers
                 return RedirectToAction(nameof(HomeController.Index), "Home");
             }
 
-
             ViewBag.BrandId = GetBrandSelectList();
             ViewBag.CategoryId = GetCategorySelectList();
             ViewBag.TransmissionType = GetTransmissionTypeSelectList();
@@ -106,12 +105,12 @@ namespace BitirmeProjesi.Controllers
             return View(model);
         }
 
-
+        // MARK: GET - Fetches brands based on selected category
         [HttpGet]
         public IActionResult GetBrandsByCategory(int categoryId)
         {
             var brands = _context.Brands
-                .Where(b => b.CategoryId == categoryId) // CategoryId'ye göre filtreleme
+                .Where(b => b.CategoryId == categoryId)
                 .Select(b => new SelectListItem
                 {
                     Value = b.BrandId.ToString(),
@@ -121,11 +120,12 @@ namespace BitirmeProjesi.Controllers
             return Json(brands);
         }
 
+        // MARK: GET - Fetches models based on selected brand
         [HttpGet]
         public IActionResult GetModelsByBrand(int brandId)
         {
             var models = _context.BrandModels
-                .Where(m => m.BrandId == brandId) // BrandId'ye göre filtreleme
+                .Where(m => m.BrandId == brandId)
                 .Select(m => new SelectListItem
                 {
                     Value = m.ModelId.ToString(),
@@ -135,6 +135,7 @@ namespace BitirmeProjesi.Controllers
             return Json(models);
         }
 
+        // MARK: Helper - Fetches the list of brands
         private IEnumerable<SelectListItem> GetBrandSelectList()
         {
             return _context.Brands.Select(b => new SelectListItem
@@ -144,6 +145,7 @@ namespace BitirmeProjesi.Controllers
             }).ToList();
         }
 
+        // MARK: Helper - Fetches the list of models based on brandId
         private IEnumerable<SelectListItem> GetBrandModelSelectList(int brandId)
         {
             return _context.BrandModels
@@ -155,6 +157,7 @@ namespace BitirmeProjesi.Controllers
                 }).ToList();
         }
 
+        // MARK: Helper - Fetches the list of categories
         private IEnumerable<SelectListItem> GetCategorySelectList()
         {
             return _context.Categories.Select(c => new SelectListItem
@@ -164,6 +167,7 @@ namespace BitirmeProjesi.Controllers
             }).ToList();
         }
 
+        // MARK: Helper - Fetches the list of transmission types
         private IEnumerable<SelectListItem> GetTransmissionTypeSelectList()
         {
             return Enum.GetValues(typeof(TransmissionType)).Cast<TransmissionType>()
@@ -174,6 +178,7 @@ namespace BitirmeProjesi.Controllers
                 }).ToList();
         }
 
+        // MARK: GET - Fetches horsepower and torque based on selected model
         [HttpGet]
         public IActionResult GetHorsePowerAndTorqueByModel(int modelId)
         {

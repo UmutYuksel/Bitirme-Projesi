@@ -1,0 +1,51 @@
+@model IEnumerable<BitirmeProjesi.Models.BrandModel>
+
+<style>
+    .table tbody {
+        display: block;
+        max-height: 200px;
+        overflow-y: auto;
+    }
+
+    .table thead,
+    .table tbody tr {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+    }
+</style>
+
+<div class="card p-1">
+    @if (TempData["DeleteBrandModelError"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["DeleteBrandModelError"]
+        </div>
+    }
+
+    <table class="table table-striped" style="max-height: 200px; overflow-y: auto;">
+        <thead>
+            <tr>
+                <th scope="col">Model Adı</th>
+                <th scope="col">Beygir Gücü</th>
+                <th scope="col">Maksimum Tork</th>
+                <th scope="col">Ayarlar</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var brandModel in Model.Reverse())
+            {
+                <tr class="brand-row">
+                    <td>@brandModel.ModelName</td>
+                    <td>@brandModel.HorsePower</td>
+                    <td>@brandModel.MaxTorque</td>
+                    <td>
+                        <form asp-action="DeleteBrandModel" asp-route-id="@brandModel.ModelId" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-secondary" onclick="return confirm('Bu kaydı silmek istediğinize emin misiniz?');">Sil</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

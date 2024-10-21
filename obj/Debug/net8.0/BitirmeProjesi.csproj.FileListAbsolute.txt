@@ -131,3 +131,4 @@
 /Users/iremericek/BitirmeProjesi/obj/Debug/net8.0/BitirmeProjesi.pdb
 /Users/iremericek/BitirmeProjesi/obj/Debug/net8.0/BitirmeProjesi.genruntimeconfig.cache
 /Users/iremericek/BitirmeProjesi/obj/Debug/net8.0/ref/BitirmeProjesi.dll
+/Users/iremericek/BitirmeProjesi/obj/Debug/net8.0/BitirmeProjesi.sourcelink.json

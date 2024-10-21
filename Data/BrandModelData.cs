@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using BitirmeProjesi.Models;
 
 namespace BitirmeProjesi.Data
 {
@@ -10,6 +11,8 @@ namespace BitirmeProjesi.Data
         public int ModelId { get; set; }
         public int BrandId { get; set; }
         public string? ModelName { get; set; }
+        public int HorsePower { get; set; }
+        public int MaxTorque { get; set; }
         public int CategoryId { get; set; }
     }
 }

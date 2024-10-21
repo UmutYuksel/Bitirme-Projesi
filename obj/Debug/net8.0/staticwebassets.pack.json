@@ -13,6 +13,46 @@
       "PackagePath": "staticwebassets/favicon.ico"
     },
     {
+      "Id": "/Users/iremericek/BitirmeProjesi/wwwroot/img/01363ff6-041b-4c79-8b88-09d97bb9dac3.jpg",
+      "PackagePath": "staticwebassets/img/01363ff6-041b-4c79-8b88-09d97bb9dac3.jpg"
+    },
+    {
+      "Id": "/Users/iremericek/BitirmeProjesi/wwwroot/img/0574f95f-716f-4dc6-bba6-8d7930560d1b.jpg",
+      "PackagePath": "staticwebassets/img/0574f95f-716f-4dc6-bba6-8d7930560d1b.jpg"
+    },
+    {
+      "Id": "/Users/iremericek/BitirmeProjesi/wwwroot/img/2d3276d9-4dbc-46ce-a1ef-ef8affeaee86.jpg",
+      "PackagePath": "staticwebassets/img/2d3276d9-4dbc-46ce-a1ef-ef8affeaee86.jpg"
+    },
+    {
+      "Id": "/Users/iremericek/BitirmeProjesi/wwwroot/img/2d7f75ff-7df6-4d3b-981d-8502103bed1e.jpg",
+      "PackagePath": "staticwebassets/img/2d7f75ff-7df6-4d3b-981d-8502103bed1e.jpg"
+    },
+    {
+      "Id": "/Users/iremericek/BitirmeProjesi/wwwroot/img/2fa0f1d2-dcf1-487c-8cb0-73e23921e7a3.jpg",
+      "PackagePath": "staticwebassets/img/2fa0f1d2-dcf1-487c-8cb0-73e23921e7a3.jpg"
+    },
+    {
+      "Id": "/Users/iremericek/BitirmeProjesi/wwwroot/img/442331cf-6526-424d-9236-08d8d1b74bd2.jpg",
+      "PackagePath": "staticwebassets/img/442331cf-6526-424d-9236-08d8d1b74bd2.jpg"
+    },
+    {
+      "Id": "/Users/iremericek/BitirmeProjesi/wwwroot/img/a0f788ae-aec9-4fdb-8632-92ad3be08fd3.jpg",
+      "PackagePath": "staticwebassets/img/a0f788ae-aec9-4fdb-8632-92ad3be08fd3.jpg"
+    },
+    {
+      "Id": "/Users/iremericek/BitirmeProjesi/wwwroot/img/d0534ad1-a001-48c6-b953-7fc66449ebb9.jpg",
+      "PackagePath": "staticwebassets/img/d0534ad1-a001-48c6-b953-7fc66449ebb9.jpg"
+    },
+    {
+      "Id": "/Users/iremericek/BitirmeProjesi/wwwroot/img/f59499ac-a165-4bc4-a384-9fbf3addc737.jpg",
+      "PackagePath": "staticwebassets/img/f59499ac-a165-4bc4-a384-9fbf3addc737.jpg"
+    },
+    {
+      "Id": "/Users/iremericek/BitirmeProjesi/wwwroot/img/f5e14afa-cb31-42e9-8363-cbe6ef30106e.png",
+      "PackagePath": "staticwebassets/img/f5e14afa-cb31-42e9-8363-cbe6ef30106e.png"
+    },
+    {
       "Id": "/Users/iremericek/BitirmeProjesi/wwwroot/js/getBrandsByCategory.js",
       "PackagePath": "staticwebassets/js/getBrandsByCategory.js"
     },

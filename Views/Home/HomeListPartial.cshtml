@@ -1,0 +1,59 @@
+@model IEnumerable<BitirmeProjesi.Models.CarCreate>
+<style>
+    tr td {
+        height: 80px;
+        vertical-align: middle;
+    }
+
+    tr td img {
+        width: 100%; /* Sütun genişliğini kaplar */
+        height: 80px; /* Yükseklik sabitlenmiş */
+        object-fit: cover; /* Görüntüyü kırpmadan hücreye sığdırır */
+    }
+
+    tr td a {
+        color: #039 !important;
+        text-decoration: none !important;
+        font-weight: bold;
+        text-align: left;
+        display: inline-block;
+    }
+    /* Tablo satırları için varsayılan stil */
+    tbody tr {
+        transition: background-color 0.3s, opacity 0.3s; /* Geçiş efekti */
+    }
+
+    /* Satır üzerine gelindiğinde uygulanacak stil */
+    tbody tr:hover {
+        background-color: #79c0a9;; /* Hover rengi */
+    }
+
+    /* İsterseniz, satırın tıklanabilir olduğunu belirtmek için farklı bir renk de kullanabilirsiniz */
+    tbody tr {
+        cursor: pointer; /* Tıklanabilir simgesi */
+    }
+</style>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col" style="width: 150px;">Resim</th>
+            <th scope="col">İlan Başlığı</th>
+            <th scope="col">Fiyat</th>
+            <th scope="col">İlan Tarihi</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var car in Model.Reverse())
+    {   
+        <tr onclick="window.location='@Url.Action("Details", "Home", new { id = car.ModelId })';">
+            <td>
+                <img src="@Url.Content("~/img/" + car.Image)" alt="Car Image" style="width: 100px; height: auto;" />
+            </td>
+            <td>@car.Title</td>
+            <td>@car.Price.ToString("N0") TL</td>
+            <td>@car.AdvertTime.ToString("dd.MM.yyyy")</td>
+        </tr>
+    }
+    </tbody>
+</table>

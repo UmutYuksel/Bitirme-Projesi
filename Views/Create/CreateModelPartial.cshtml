@@ -1,5 +1,5 @@
 @model BitirmeProjesi.Models.BrandModel
-
+<div class="card p-3">
 <h4>Model Ekle</h4>
 <form asp-controller="Create" asp-action="CreateModelPartial" method="post" enctype="multipart/form-data">
     <div asp-validation-summary="All"></div>
@@ -17,13 +17,9 @@
     </div>
 
     <div class="mb-3">
-        <label for="brandSelect" class="form-label">Marka Seçin:</label>
+        <label for="BrandId" class="form-label">Marka Seçin:</label>
         <select asp-for="BrandId" id="brandSelect" class="form-select">
             <option value="">Marka Seçiniz</option>
-            @foreach (var brand in ViewBag.Brands)
-            {
-                <option value="@brand.Value">@brand.Text</option>
-            }
         </select>
         <span asp-validation-for="BrandId"></span>
     </div>
@@ -34,5 +30,49 @@
         <span asp-validation-for="ModelName"></span>
     </div>
 
-    <button class="btn btn-primary" type="submit">Kaydet</button>
+    <div class="mb-3">
+        <label asp-for="HorsePower" class="form-label"></label>
+        <input asp-for="HorsePower" class="form-control">
+        <span asp-validation-for="HorsePower"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="MaxTorque" class="form-label"></label>
+        <input asp-for="MaxTorque" class="form-control">
+        <span asp-validation-for="MaxTorque"></span>
+    </div>
+
+    <button class="btn btn-success" type="submit">Kaydet</button>
 </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function getBrandsByCategory(categoryId) {
+        if (categoryId) {
+            $.ajax({
+                url: '/Create/GetBrandsByCategory',
+                type: 'GET',
+                data: { categoryId: categoryId },
+                success: function (data) {
+                    // Başarı durumunda markaları güncelle
+                    var brandSelect = $('#brandSelect'); // Markaların listeleneceği select elementinin ID'si
+                    brandSelect.empty(); // Mevcut markaları temizle
+                    $.each(data, function (index, brand) {
+                        brandSelect.append($('<option>', {
+                            value: brand.brandId,
+                            text: brand.brandName
+                        }));
+                    });
+                },
+                error: function (xhr, status, error) {
+                    console.error("AJAX Error: " + status + error);
+                }
+            });
+        } else {
+            // Eğer kategori seçilmemişse marka listesini temizle
+            $('#brandSelect').empty();
+            $('#brandSelect').append('<option value="">Önce kategori seçin</option>');
+        }
+    }
+</script>

@@ -1,0 +1,29 @@
+@model BitirmeProjesi.Models.Brand
+
+<div class="card p-3">
+    <h2>Marka Düzenle</h2>
+
+    <form asp-action="EditBrand" asp-controller="Create" method="post">
+        <div asp-validation-summary="All"></div>
+        <input type="hidden" asp-for="BrandId" />
+        <div class="form-group mb-3">
+
+            <label for="BrandName" class="mb-1">Marka Adı</label>
+            <input type="text" class="form-control mb-3" id="BrandName" name="BrandName" value="@Model.BrandName"
+                required />
+            <label for="CategoryId" class="mb-1">Kategori</label>
+            <select name="CategoryId" class="form-select mb-3" required>
+                <option value="" disabled>Kategori Seçiniz</option>
+                @foreach (var category in ViewBag.Categories)
+                {
+                    <option value="@category.CategoryId" selected="@(category.CategoryId == Model.CategoryId)">
+                        @category.CategoryName
+                    </option>
+                }
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-success">Kaydet</button>
+        <a asp-action="Create" class="btn btn-secondary">Geri Dön</a>
+    </form>
+</div>

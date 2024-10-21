@@ -1,88 +1,160 @@
 @model BitirmeProjesi.Models.CarCreate
 
-<h2>Yeni Araç Ekle</h2>
+@{
+    ViewBag.Title = "Araç Ekleme";
+}
 
-<form asp-action="Create" method="post">
-    <div class="form-group">
+<h2>Araç Ekle</h2>
+
+<form asp-controller="CarCreate" asp-action="Create" method="post" enctype="multipart/form-data" class="my-4">
+    @Html.AntiForgeryToken()
+    <div asp-validation-summary="All"></div>
+    <div class="form-group mb-1">
         <label asp-for="CategoryId"></label>
-        <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId" id="categorySelect"></select>
+        <select id="CategoryId" name="CategoryId" class="form-control">
+            @foreach (var category in ViewBag.CategoryId)
+            {
+                <option value="@category.Value">@category.Text</option>
+            }
+        </select>
+        <span asp-validation-for="CategoryId" class="text-danger"></span>
     </div>
 
-    <div class="form-group">
+    <div class="form-group mb-1">
         <label asp-for="BrandId"></label>
-        <select asp-for="BrandId" class="form-control" asp-items="ViewBag.BrandId" id="brandSelect"></select>
+        <select id="BrandId" name="BrandId" class="form-control">
+            <!-- Dinamik olarak doldurulacak -->
+        </select>
+        <span asp-validation-for="BrandId" class="text-danger"></span>
     </div>
 
-    <div class="form-group">
+    <div class="form-group mb-1">
         <label asp-for="ModelName"></label>
-        <select asp-for="ModelName" class="form-control" asp-items="ViewBag.ModelId" id="modelSelect"></select>
+        <select id="ModelId" name="ModelId" class="form-control">
+            <!-- Dinamik olarak doldurulacak -->
+        </select>
+        <span asp-validation-for="ModelId" class="text-danger"></span>
     </div>
     
-    <div class="form-group">
-        <label asp-for="Year" class="control-label"></label>
+    <!-- Gizli alan -->
+    <input type="hidden" id="ModelName" name="ModelName" />
+
+    <div class="form-group mb-1">
+        <label asp-for="transmissionType"></label>
+        <select asp-for="transmissionType" class="form-control">
+            @foreach (var item in ViewBag.TransmissionType)
+            {
+                <option value="@item.Value">@item.Text</option>
+            }
+        </select>
+        <span asp-validation-for="transmissionType" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-1">
+        <label asp-for="HorsePower"></label>
+        <input asp-for="HorsePower" class="form-control" readonly name="BrandModel.HorsePower" />
+        <span asp-validation-for="HorsePower" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-1">
+        <label asp-for="MaxTorque"></label>
+        <input asp-for="MaxTorque" class="form-control" readonly name="BrandModel.MaxTorque" />
+        <span asp-validation-for="MaxTorque" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-1">
+        <label asp-for="Title"></label>
+        <input asp-for="Title" class="form-control">
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-1">
+        <label asp-for="Price"></label>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-1">
+        <label asp-for="Year"></label>
         <input asp-for="Year" class="form-control" />
         <span asp-validation-for="Year" class="text-danger"></span>
     </div>
 
-    <div class="form-group">
-        <label asp-for="Millage" class="control-label"></label>
+    <div class="form-group mb-1">
+        <label asp-for="Millage"></label>
         <input asp-for="Millage" class="form-control" />
         <span asp-validation-for="Millage" class="text-danger"></span>
     </div>
 
-    <div class="form-group">
-        <label asp-for="HorsePower" class="control-label"></label>
-        <input asp-for="HorsePower" class="form-control" />
-        <span asp-validation-for="HorsePower" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="MaxTorque" class="control-label"></label>
-        <input asp-for="MaxTorque" class="form-control" />
-        <span asp-validation-for="MaxTorque" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="Color" class="control-label"></label>
+    <div class="form-group mb-1">
+        <label asp-for="Color"></label>
         <input asp-for="Color" class="form-control" />
         <span asp-validation-for="Color" class="text-danger"></span>
     </div>
 
-     <div class="form-group">
-        <label asp-for="transmissionType"></label>
-        <select asp-for="transmissionType" class="form-control" asp-items="ViewBag.TransmissionType"></select>
+    <br>
+    <div class="input-group mb-3">
+        <input type="file" name="imageFile" id="imageFile" class="form-control">
     </div>
 
-    <button type="submit" class="btn btn-primary">Kaydet</button>
-    <a asp-action="Index,Home" class="btn btn-secondary">İptal</a>
+    <div class="form-group mb-1">
+    <label asp-for="Description"></label>
+    <textarea asp-for="Description" class="form-control" rows="4" style="resize: none;" oninput="autoResize(this)"></textarea>
+    <span asp-validation-for="Description" class="text-danger"></span>
+    
+    <div class="my-4">
+        <button type="submit" class="btn btn-success">Kaydet</button>
+        <a asp-action="Index" asp-controller="Home" class="btn btn-secondary">İptal</a>
+    </div>
 </form>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript">
         $(document).ready(function () {
-            $('#categorySelect').change(function () {
+            $('#CategoryId').change(function () {
                 var categoryId = $(this).val();
-                $.get('/CarCreate/GetBrandsByCategory?categoryId=' + categoryId, function (data) {
-                    $('#brandSelect').empty();
-                    $('#brandSelect').append('<option value="">Marka Seçin</option>');
-                    $.each(data, function (i, item) {
-                        $('#brandSelect').append('<option value="' + item.value + '">' + item.text + '</option>');
+                if (categoryId) {
+                    $.getJSON('/CarCreate/GetBrandsByCategory', { categoryId: categoryId }, function (brands) {
+                        $('#BrandId').empty();
+                        $('#BrandId').append('<option value="">Marka Seçiniz</option>');
+                        $.each(brands, function (i, brand) {
+                            $('#BrandId').append('<option value="' + brand.value + '">' + brand.text + '</option>');
+                        });
                     });
-                    $('#modelSelect').empty().append('<option value="">Model Seçin</option>'); // Reset model select
-                });
+                } else {
+                    $('#BrandId').empty();
+                    $('#ModelId').empty();
+                }
             });
 
-            $('#brandSelect').change(function () {
+            $('#BrandId').change(function () {
                 var brandId = $(this).val();
-                $.get('/CarCreate/GetModelsByBrand?brandId=' + brandId, function (data) {
-                    $('#modelSelect').empty();
-                    $('#modelSelect').append('<option value="">Model Seçin</option>');
-                    $.each(data, function (i, item) {
-                        $('#modelSelect').append('<option value="' + item.value + '">' + item.text + '</option>');
+                if (brandId) {
+                    $.getJSON('/CarCreate/GetModelsByBrand', { brandId: brandId }, function (models) {
+                        $('#ModelId').empty();
+                        $('#ModelId').append('<option value="">Model Seçiniz</option>');
+                        $.each(models, function (i, model) {
+                            $('#ModelId').append('<option value="' + model.value + '">' + model.text + '</option>');
+                        });
                     });
-                });
+                } else {
+                    $('#ModelId').empty();
+                }
+            });
+
+            $('#ModelId').change(function () {
+                var modelId = $(this).val();
+                if (modelId) {
+                    $.getJSON('/CarCreate/GetHorsePowerAndTorqueByModel', { modelId: modelId }, function (data) {
+                        $('#HorsePower').val(data.horsePower);
+                        $('#MaxTorque').val(data.maxTorque);
+
+                        // Model adını gizli input alanına atayın
+                        var selectedModelText = $('#ModelId option:selected').text();
+                        $('#ModelName').val(selectedModelText);
+                    });
+                }
             });
         });
     </script>

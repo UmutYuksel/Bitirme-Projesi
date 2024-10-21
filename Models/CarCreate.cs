@@ -43,5 +43,33 @@ namespace BitirmeProjesi.Models
         [Display(Name = "Şanzıman Tipi")]
         [Required(ErrorMessage = "Şanzıman Tipi Eksik")]
         public TransmissionType transmissionType { get; set; }
+
+        [Display(Name = "İlan Resmi")]
+        [Required(ErrorMessage = "İlan Resmi Eksik")]
+        public string? Image {get; set;}
+
+        [Display(Name = "İlan Açıklaması")]
+        [Required(ErrorMessage = "İlan Açıklaması Eksik")]
+        public string? Description {get; set;}
+
+        [Display(Name = "İlan Fiyatı")]
+        [Required(ErrorMessage = "İlan Fiyatı Eksik")]
+        public int Price { get; set; }
+
+        [Display(Name = "İlan Tarihi")]
+        [Required(ErrorMessage = "İlan Tarihi Eksik")]
+        public DateTime AdvertTime {get; set;}
+
+        [Display(Name = "İlan Başlığı")]
+        [Required(ErrorMessage = "İlan Başlığı Eksik")]
+        public string? Title {get; set;}
     }
 }
+
+    public enum TransmissionType
+    {
+        Manuel,
+        Otomatik,
+        Yarı_Otomatik,
+        CVT
+    } 

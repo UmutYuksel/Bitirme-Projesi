@@ -1,39 +1,43 @@
-@model IEnumerable<BitirmeProjesi.Models.Category>
-<style>
-    ul li span{font-size: 10px; padding-left: 3px; color: #a1a1a1;}  
-</style>
+@model IEnumerable<BitirmeProjesi.ViewModel.CategoryWithVehicleCountViewModel>
+
 <div class="uiBox">
-    <h3 class="cat-title">Kategoriler</h3>
     <nav>
         <ul class="categories-left-menu">
             <li class="category-vehicle">
-                
                 <ul>
-                    <a href="" title="Vasıta">Vasıta</a><span>(123.123)</span>
-                    <!-- İlk 9 öğeyi göster -->
+                    <a style="font-weight: bold;" href="" title="Vasıta">Vasıta</a>
                     @foreach (var category in Model.Take(9))
                     {
-                        <li><a href="">@category.CategoryName</a><span>(123.123)</span></li>
+                        <li>
+                            <a href="javascript:void(0);" onclick="filterCars(@category.Category.CategoryId)">
+                                @category.Category.CategoryName
+                            </a>
+                            <span style="font-size: 0.8em; color: gray;">(@category.VehicleCount)</span>
+                        </li>
                     }
 
-                    <!-- Geri kalan kategoriler başlangıçta gizlenmiş halde olacak -->
                     <div class="hidden-categories" style="display:none;">
                         @foreach (var category in Model.Skip(9))
                         {
-                            <li><a href="">@category.CategoryName</a><span>(123.123)</span></li>
+                            <li>
+                                <a href="javascript:void(0);" onclick="filterCars(@category.Category.CategoryId)">
+                                    @category.Category.CategoryName
+                                </a>
+                                <span style="font-size: 0.8em; color: gray;">(@category.VehicleCount)</span>
+                            </li>
                         }
                     </div>
 
-                    <!-- Tümünü Göster / Kapat Butonu -->
-                    <a href="javascript:void(0);" class="toggle-all" data-state="show">
-                        Tümünü Göster<i style="padding-left: 5px;" class="bi bi-caret-down-fill"></i>
+                    <a href="javascript:void(0);" class="toggle-all" data-state="show">Tümünü Göster
+                        <i style="padding-left: 5px;" class="bi bi-caret-down-fill"></i>
                     </a>
                 </ul>
             </li>
-            <hr>
+            <hr class="my-3">
         </ul>
     </nav>
 </div>
+
 
 <!-- jQuery veya Vanilla JS ile Tümünü Göster / Kapat işlevi -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -55,4 +59,17 @@
             }
         });
     });
+    function filterCars(categoryId) {
+        $.ajax({
+            url: '@Url.Action("GetCarsByCategory", "Home")', // Aksiyonunuzu belirtin
+            type: 'GET',
+            data: { categoryId: categoryId },
+            success: function (data) {
+                $('#carListContainer').html(data); // Gelen veriyi güncelle
+            },
+            error: function () {
+                alert('Bir hata oluştu.');
+            }
+        });
+    }
 </script>

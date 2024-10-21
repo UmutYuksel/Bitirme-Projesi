@@ -22,6 +22,18 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2FyQ3JlYXRlL0NyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/iremericek/BitirmeProjesi/Views/Create/BrandListPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ3JlYXRlL0JyYW5kTGlzdFBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/iremericek/BitirmeProjesi/Views/Create/BrandModelListPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ3JlYXRlL0JyYW5kTW9kZWxMaXN0UGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/iremericek/BitirmeProjesi/Views/Create/CategoryListPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ3JlYXRlL0NhdGVnb3J5TGlzdFBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/iremericek/BitirmeProjesi/Views/Create/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ3JlYXRlL0NyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -38,12 +50,32 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ3JlYXRlL0NyZWF0ZU1vZGVsUGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/iremericek/BitirmeProjesi/Views/Create/EditBrand.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ3JlYXRlL0VkaXRCcmFuZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/iremericek/BitirmeProjesi/Views/Create/EditCategory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ3JlYXRlL0VkaXRDYXRlZ29yeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/iremericek/BitirmeProjesi/Views/Home/CategoryTreePartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9DYXRlZ29yeVRyZWVQYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/iremericek/BitirmeProjesi/Views/Home/HomeList.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Ib21lTGlzdC5jc2h0bWw=
+[/Users/iremericek/BitirmeProjesi/Views/Home/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9EZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/iremericek/BitirmeProjesi/Views/Home/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9FZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/iremericek/BitirmeProjesi/Views/Home/HomeListPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Ib21lTGlzdFBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/iremericek/BitirmeProjesi/Views/Home/HomeShowcasePartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Ib21lU2hvd2Nhc2VQYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/iremericek/BitirmeProjesi/Views/Home/Index.cshtml]

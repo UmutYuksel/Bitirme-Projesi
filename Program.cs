@@ -1,5 +1,6 @@
 using BitirmeProjesi.Data;
 using Microsoft.EntityFrameworkCore;
+using BitirmeProjesi.ViewModel;
 
 var builder = WebApplication.CreateBuilder(args);
 

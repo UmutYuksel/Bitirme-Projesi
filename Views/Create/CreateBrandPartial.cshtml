@@ -1,6 +1,7 @@
 @model BitirmeProjesi.Models.Brand
-
+<div class="card p-3">
 <h4>Marka Ekle</h4>
+
 <form asp-controller="Create" asp-action="CreateBrandPartial" method="post">
     <div asp-validation-summary="All"></div>
     <div class="mb-3">
@@ -19,5 +20,6 @@
         <input asp-for="BrandName" class="form-control" />
         <span asp-validation-for="BrandName"></span>
     </div>
-    <button class="btn btn-primary" type="submit">Kaydet</button>
+    <button class="btn btn-success" type="submit">Kaydet</button>
 </form>
+</div>

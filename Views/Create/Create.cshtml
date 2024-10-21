@@ -1,0 +1,27 @@
+﻿@model BitirmeProjesi.ViewModel.CreateViewModel
+
+<h2>Admin Panel</h2>
+<hr>
+
+<div class="row">
+    <div class="col-md-8">
+        <partial name="CreateModelPartial" model="new BitirmeProjesi.Models.BrandModel()" />
+    </div>
+
+    <div class="col-md-4">
+        <partial name="CreateBrandPartial" model="new BitirmeProjesi.Models.Brand()" />
+        <hr>
+        <partial name="CreateCategoryPartial" model="new BitirmeProjesi.Models.Category()" />
+</div>
+
+<div class="mt-5">
+    <partial name="CategoryListPartial" model="Model.Categories" />
+</div>
+
+<div class="mt-5">
+    <partial name="BrandListPartial" model="Model.Brands" />
+</div>
+
+<div class="mt-5">
+    <partial name="BrandModelListPartial" model="Model.BrandModels" />
+</div>

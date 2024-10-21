@@ -1,0 +1,13 @@
+@model BitirmeProjesi.Models.Category
+<div class="card p-3">
+<h4>Kategori Ekle</h4>
+<form asp-controller="Create" asp-action="CreateCategoryPartial" method="post" enctype="multipart/form-data">
+    <div asp-validation-summary="All"></div>
+    <div class="mb-3">
+        <label asp-for="CategoryName" class="form-label"></label>
+        <input asp-for="CategoryName" class="form-control">
+        <span asp-validation-for="CategoryName"></span>
+    </div>
+    <button class="btn btn-success" type="submit">Kaydet</button>
+</form>
+</div>

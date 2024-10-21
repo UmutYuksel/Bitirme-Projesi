@@ -1,0 +1,25 @@
+@model IEnumerable<BitirmeProjesi.Models.CarCreate>
+
+<div class="container">
+    <h2 class="text-center my-4">İlan Vitrini</h2>
+
+    <div class="row">
+        @foreach (var car in Model.Reverse().Take(4))
+        {
+            <!-- Listeyi ters çevirip son 4 aracı al -->
+            <div class="col-md-3 mb-4" onclick="window.location='@Url.Action("Details", "Home", new { id = car.ModelId })';" style="cursor: pointer;">
+                <div class="card">
+                    <img src="@Url.Content("~/img/" + car.Image)" class="card-img-top" alt="Car Image"
+                        style="height: 150px; object-fit: cover;" />
+
+                    <div class="card-body text-center" >
+                        <p class="card-text" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                            @car.Title
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        }
+    </div>
+</div>

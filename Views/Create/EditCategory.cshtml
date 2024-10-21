@@ -1,0 +1,18 @@
+@model BitirmeProjesi.Models.Category
+
+<div class="card p-3">
+    <h2>Kategoriyi Düzenle</h2>
+
+    <form asp-action="EditCategory" asp-controller="Create" method="post">
+        <div asp-validation-summary="All"></div>
+        <input type="hidden" asp-for="CategoryId" />
+        <div class="form-group mb-3">
+            <label for="CategoryName">Kategori Adı</label>
+            <input type="text" class="form-control" id="CategoryName" name="CategoryName" value="@Model.CategoryName"
+                required />
+        </div>
+
+        <button type="submit" class="btn btn-success">Kaydet</button>
+        <a asp-action="Create" class="btn btn-secondary">Geri Dön</a>
+    </form>
+</div>

@@ -1,0 +1,125 @@
+@model BitirmeProjesi.Models.CarCreate
+<style>
+    .card p {
+        white-space: pre-wrap;
+        /* Boşlukları korur ve metin taşmasını önler */
+    }
+
+    .cardDescription {
+        background: -webkit-linear-gradient(top, #ffe700 0%, #ffc000 100%);
+        /* Safari ve Chrome için */
+        background: linear-gradient(to bottom, #ffe700 0%, #ffc000 100%);
+        /* Diğer tarayıcılar için */
+        border-radius: 8px;
+        /* Köşeleri yuvarlamak için isteğe bağlı */
+        padding: 1.5rem;
+        /* İçerik için boşluk */
+        width: 180px;
+        /* Genişlik */
+        height: 40px;
+        /* Yükseklik */
+        display: flex;
+        /* Flexbox kullanarak içeriği düzenlemek için */
+        align-items: center;
+        /* Dikey ortalama */
+        justify-content: center;
+        /* Yatay ortalama */
+    }
+
+    .cardDescription h4 {
+       
+        font-size: 16px;
+        /* Yazı boyutu */
+        color: #333;
+        /* Yazı rengi */
+    }
+</style>
+
+
+<div class="container bg-white p-3">
+    <div class="mb-3">
+        <h4>@Model.Title</h5>
+    </div>
+    <hr>
+    <div class="row">
+        <!-- Car Image and Carousel -->
+        <div class="col-md-8">
+            <div id="carImageCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="@Url.Content("~/img/" + Model.Image)" class="d-block w-100" alt="Car Image"
+                            style="height: 550px; object-fit: cover;">
+                    </div>
+                    <!-- Daha fazla resim eklemek isterseniz buraya başka carousel-item div'leri ekleyebilirsiniz -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Car Details -->
+        <div class="col-md-4">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>Fiyat</th>
+                        <td>@Model.Price.ToString("N0") TL</td>
+                    </tr>
+                    <tr>
+                        <th>İlan Tarihi</th>
+                        <td>@Model.AdvertTime.ToString("dd.MM.yyyy")</td>
+                    </tr>
+                    <tr>
+                        <th>Marka</th>
+                        <td>@ViewBag.BrandName</td>
+                    </tr>
+                    <tr>
+                        <th>Model</th>
+                        <td>@Model.ModelName</td>
+                    </tr>
+                    <tr>
+                        <th>Yıl</th>
+                        <td>@Model.Year</td>
+                    </tr>
+                    <tr>
+                        <th>Kilometre</th>
+                        <td>@Model.Millage</td>
+                    </tr>
+                    <tr>
+                        <th>Beygir Gücü</th>
+                        <td>@Model.HorsePower hp</td>
+                    </tr>
+                    <tr>
+                        <th>Maksimum Tork</th>
+                        <td>@Model.MaxTorque Nm</td>
+                    </tr>
+                    <tr>
+                        <th>Şanzıman</th>
+                        <td>@Model.transmissionType</td>
+                    </tr>
+                    <tr>
+                        <th>Renk</th>
+                        <td>@Model.Color</td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <!-- Düzenle ve Sil butonları -->
+            <div class="mt-3">
+                <a asp-action="Edit" asp-route-id="@Model.ModelId" class="btn btn-success">Düzenle</a>
+                <form asp-action="Delete" asp-route-id="@Model.ModelId" method="post" style="display:inline;">
+                    <button type="submit" class="btn btn-secondary"
+                        onclick="return confirm('Bu kaydı silmek istediğinize emin misiniz?');">İlanı Sil</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="cardDescription mb-0 mt-4">
+    <h4 class="p-2">İlan Detayları</h4>
+</div>
+
+<!-- İlan Detayları -->
+<div class="card d-flex flex-column">
+    <div class="p-3">
+        <p>@Model.Description</p>
+    </div>
+</div>

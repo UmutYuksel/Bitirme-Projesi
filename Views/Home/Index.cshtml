@@ -1,0 +1,19 @@
+﻿@model BitirmeProjesi.ViewModel.HomeIndexViewModel
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="bg-white p-3">
+            <partial name="CategoryTreePartial" model="Model.Categories" />
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="bg-white p-1">
+            <partial name="HomeShowcasePartial" model="Model.CarList;">
+        </div>
+    </div>
+    <div class="col-md-12 mt-3">
+        <div class="bg-white p-1" id="carListContainer">
+            <partial name="HomeListPartial" model="Model.CarList;" />
+        </div>
+    </div>
+</div>

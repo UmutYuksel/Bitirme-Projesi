@@ -1,0 +1,54 @@
+@model IEnumerable<BitirmeProjesi.Models.Category>
+
+<style>
+    .table tbody {
+        display: block;
+        max-height: 200px;
+        /* İstediğiniz yüksekliği buraya ekleyebilirsiniz */
+        overflow-y: auto;
+        /* Taşma durumunda dikey kaydırma */
+    }
+
+    .table thead,
+    .table tbody tr {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+    }
+</style>
+
+<div class="card p-1">
+    @if (TempData["DeleteCategoryError"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["DeleteCategoryError"]
+        </div>
+    }
+
+    <table class="table table-striped" style="max-height: 200px; overflow-y: auto;">
+        <thead>
+            <tr>
+                <th scope="col">Kategori Id</th>
+                <th scope="col">Kategori Adı</th>
+                <th scope="col">Ayarlar</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var category in Model.Reverse())
+            {
+                <tr class="category-row">
+                    <td>@category.CategoryId</td>
+                    <td>@category.CategoryName</td>
+                    <td>
+                        <a asp-action="EditCategory" asp-route-id="@category.CategoryId" class="btn btn-success">Düzenle</a>
+                        <form asp-action="DeleteCategory" asp-route-id="@category.CategoryId" method="post"
+                            style="display:inline;">
+                            <button type="submit" class="btn btn-secondary"
+                                onclick="return confirm('Bu kaydı silmek istediğinize emin misiniz?');">Sil</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

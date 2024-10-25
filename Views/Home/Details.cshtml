@@ -1,40 +1,26 @@
 @model BitirmeProjesi.Models.CarCreate
+
 <style>
     .card p {
         white-space: pre-wrap;
         /* Boşlukları korur ve metin taşmasını önler */
     }
 
-    .cardDescription {
+    #active{ 
         background: -webkit-linear-gradient(top, #ffe700 0%, #ffc000 100%);
         /* Safari ve Chrome için */
         background: linear-gradient(to bottom, #ffe700 0%, #ffc000 100%);
         /* Diğer tarayıcılar için */
-        border-radius: 8px;
-        /* Köşeleri yuvarlamak için isteğe bağlı */
-        padding: 1.5rem;
-        /* İçerik için boşluk */
-        width: 180px;
-        /* Genişlik */
-        height: 40px;
-        /* Yükseklik */
-        display: flex;
-        /* Flexbox kullanarak içeriği düzenlemek için */
-        align-items: center;
-        /* Dikey ortalama */
-        justify-content: center;
-        /* Yatay ortalama */
     }
 
-    .cardDescription h4 {
+    #cardDescription li a{
        
-        font-size: 16px;
+        font-size: 15px;
         /* Yazı boyutu */
         color: #333;
         /* Yazı rengi */
     }
 </style>
-
 
 <div class="container bg-white p-3">
     <div class="mb-3">
@@ -113,9 +99,15 @@
         </div>
     </div>
 </div>
-<div class="cardDescription mb-0 mt-4">
-    <h4 class="p-2">İlan Detayları</h4>
-</div>
+<ul id="cardDescription" class="nav nav-tabs mb-0 mt-4 ms-2">
+    <li class="nav-item">
+        <a id="active" class="nav-link active" href="#">İlan Detayları</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Teknik Özellikler</a>
+    </li>
+
+</ul>
 
 <!-- İlan Detayları -->
 <div class="card d-flex flex-column">

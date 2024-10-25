@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "2kuECL8hrcD3i/1AzpgMgGhoDdfhqGpTMy5GS3oIESg=",
+  "Hash": "0Vwh5GDtpGfzpC697xUL7q5XIkA69dz7w7+moptci8c=",
   "Source": "BitirmeProjesi",
   "BasePath": "_content/BitirmeProjesi",
   "Mode": "Default",
@@ -376,6 +376,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/img/f5e14afa-cb31-42e9-8363-cbe6ef30106e.png"
+    },
+    {
+      "Identity": "/Users/iremericek/BitirmeProjesi/wwwroot/img/project/logo.png",
+      "SourceId": "BitirmeProjesi",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/iremericek/BitirmeProjesi/wwwroot/",
+      "BasePath": "_content/BitirmeProjesi",
+      "RelativePath": "img/project/logo.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/img/project/logo.png"
     },
     {
       "Identity": "/Users/iremericek/BitirmeProjesi/wwwroot/js/getBrandsByCategory.js",

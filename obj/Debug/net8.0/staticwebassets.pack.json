@@ -73,6 +73,10 @@
       "PackagePath": "staticwebassets/img/f5e14afa-cb31-42e9-8363-cbe6ef30106e.png"
     },
     {
+      "Id": "/Users/iremericek/BitirmeProjesi/wwwroot/img/project/logo.png",
+      "PackagePath": "staticwebassets/img/project/logo.png"
+    },
+    {
       "Id": "/Users/iremericek/BitirmeProjesi/wwwroot/js/getBrandsByCategory.js",
       "PackagePath": "staticwebassets/js/getBrandsByCategory.js"
     },

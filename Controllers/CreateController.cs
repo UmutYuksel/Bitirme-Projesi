@@ -269,8 +269,7 @@ namespace BitirmeProjesi.Controllers
                 return NotFound();
             }
 
-            var activeCars = await _context.Cars
-                .AnyAsync(car => car.ModelId == id);
+            var activeCars = await _context.Cars.AnyAsync(car => car.ModelId == id);
 
             if (activeCars)
             {
